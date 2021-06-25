@@ -1,0 +1,12 @@
+D:\My Project\ChatApp\ChatApplication\ChatEntities\bin\Debug\net5.0\ChatEntities.deps.json
+D:\My Project\ChatApp\ChatApplication\ChatEntities\bin\Debug\net5.0\ChatEntities.dll
+D:\My Project\ChatApp\ChatApplication\ChatEntities\bin\Debug\net5.0\ref\ChatEntities.dll
+D:\My Project\ChatApp\ChatApplication\ChatEntities\bin\Debug\net5.0\ChatEntities.pdb
+D:\My Project\ChatApp\ChatApplication\ChatEntities\obj\Debug\net5.0\ChatEntities.csprojAssemblyReference.cache
+D:\My Project\ChatApp\ChatApplication\ChatEntities\obj\Debug\net5.0\ChatEntities.GeneratedMSBuildEditorConfig.editorconfig
+D:\My Project\ChatApp\ChatApplication\ChatEntities\obj\Debug\net5.0\ChatEntities.AssemblyInfoInputs.cache
+D:\My Project\ChatApp\ChatApplication\ChatEntities\obj\Debug\net5.0\ChatEntities.AssemblyInfo.cs
+D:\My Project\ChatApp\ChatApplication\ChatEntities\obj\Debug\net5.0\ChatEntities.csproj.CoreCompileInputs.cache
+D:\My Project\ChatApp\ChatApplication\ChatEntities\obj\Debug\net5.0\ChatEntities.dll
+D:\My Project\ChatApp\ChatApplication\ChatEntities\obj\Debug\net5.0\ref\ChatEntities.dll
+D:\My Project\ChatApp\ChatApplication\ChatEntities\obj\Debug\net5.0\ChatEntities.pdb

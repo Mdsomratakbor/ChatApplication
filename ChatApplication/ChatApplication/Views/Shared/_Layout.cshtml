@@ -8,24 +8,28 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-   <div class="navbar">
+    <div class="navbar">
 
     </div>
-      
-   <main role="main" class="main">
-       <div class="side-menu">
-           <a href="#" class="room-btn">Rooms</a>
-           <a href="#" class="room-btn"><strong>+</strong></a>
 
-       </div>
-       <div class="chat">
-           @RenderBody()
-       </div>
-      
-   </main>
-   
+    <main role="main" class="main">
+        <div class="side-menu">
+            <a href="#" class="room-btn">Rooms</a>
+            <a href="#" class="room-btn"><strong>+</strong></a>
 
- 
+        </div>
+        <div class="chat">
+            @RenderBody()
+        </div>
+
+    </main>
+
+
+    <div class="modal active">
+        <div class="modal-body">
+
+        </div>
+    </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

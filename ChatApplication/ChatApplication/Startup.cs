@@ -1,6 +1,10 @@
+using ChatApplication.ViewModels;
+using ChatDataBase;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,7 +28,12 @@ namespace ChatApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-           // services.AddControllersWithViews().AddRazorRuntimeCompilation();
+          //  services.AddDbContext<AppDbContext>(options => options.UseSqlServer("ConnectionChatApplication"));
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnectionChatApplication")));
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores< AppDbContext>()
+                .AddDefaultTokenProviders();
+            // services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,7 +51,7 @@ namespace ChatApplication
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-           
+
             app.UseRouting();
 
             app.UseAuthorization();

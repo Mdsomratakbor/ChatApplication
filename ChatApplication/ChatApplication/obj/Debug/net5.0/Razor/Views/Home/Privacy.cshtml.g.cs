@@ -19,15 +19,8 @@ using ChatApplication;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 2 "D:\My Project\ChatApp\ChatApplication\ChatApplication\Views\_ViewImports.cshtml"
-using ChatApplication.Models;
-
-#line default
-#line hidden
-#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d8ddb6bffa5a9b264bf8f89038bf03c234083fd3", @"/Views/Home/Privacy.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e49aa32fa8951398b28f6e8078ccb88d67f6fc14", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e07139a6fa54c458543b6f5994fee5eb59fbce1f", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_Privacy : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998
