@@ -24,7 +24,6 @@ D:\My Project\ChatApp\ChatApplication\ChatApplication\obj\Debug\net5.0\ChatAppli
 D:\My Project\ChatApp\ChatApplication\ChatApplication\obj\Debug\net5.0\ChatApplication.TagHelpers.output.cache
 D:\My Project\ChatApp\ChatApplication\ChatApplication\obj\Debug\net5.0\ChatApplication.RazorCoreGenerate.cache
 D:\My Project\ChatApp\ChatApplication\ChatApplication\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
-D:\My Project\ChatApp\ChatApplication\ChatApplication\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 D:\My Project\ChatApp\ChatApplication\ChatApplication\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 D:\My Project\ChatApp\ChatApplication\ChatApplication\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 D:\My Project\ChatApp\ChatApplication\ChatApplication\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -79,3 +78,6 @@ D:\My Project\ChatApp\ChatApplication\ChatApplication\bin\Debug\net5.0\ChatDataB
 D:\My Project\ChatApp\ChatApplication\ChatApplication\bin\Debug\net5.0\ChatEntities.pdb
 D:\My Project\ChatApp\ChatApplication\ChatApplication\bin\Debug\net5.0\Humanizer.dll
 D:\My Project\ChatApp\ChatApplication\ChatApplication\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\My Project\ChatApp\ChatApplication\ChatApplication\obj\Debug\net5.0\Razor\Views\Home\CreateRoom.cshtml.g.cs
+D:\My Project\ChatApp\ChatApplication\ChatApplication\obj\Debug\net5.0\Razor\Views\Shared\Components\Room\Default.cshtml.g.cs
+D:\My Project\ChatApp\ChatApplication\ChatApplication\obj\Debug\net5.0\Razor\Views\Home\Chat.cshtml.g.cs

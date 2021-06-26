@@ -34,6 +34,9 @@
             "projectReferences": {
               "D:\\My Project\\ChatApp\\ChatApplication\\ChatDataBase\\ChatDataBase.csproj": {
                 "projectPath": "D:\\My Project\\ChatApp\\ChatApplication\\ChatDataBase\\ChatDataBase.csproj"
+              },
+              "D:\\My Project\\ChatApp\\ChatApplication\\ChatEntities\\ChatEntities.csproj": {
+                "projectPath": "D:\\My Project\\ChatApp\\ChatApplication\\ChatEntities\\ChatEntities.csproj"
               }
             }
           }

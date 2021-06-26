@@ -5950,6 +5950,7 @@
   "projectFileDependencyGroups": {
     "net5.0": [
       "ChatDataBase >= 1.0.0",
+      "ChatEntities >= 1.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.7",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.7"
     ]
@@ -5988,6 +5989,9 @@
           "projectReferences": {
             "D:\\My Project\\ChatApp\\ChatApplication\\ChatDataBase\\ChatDataBase.csproj": {
               "projectPath": "D:\\My Project\\ChatApp\\ChatApplication\\ChatDataBase\\ChatDataBase.csproj"
+            },
+            "D:\\My Project\\ChatApp\\ChatApplication\\ChatEntities\\ChatEntities.csproj": {
+              "projectPath": "D:\\My Project\\ChatApp\\ChatApplication\\ChatEntities\\ChatEntities.csproj"
             }
           }
         }

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Chat Application</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
@@ -13,11 +13,7 @@
     </div>
 
     <main role="main" class="main">
-        <div class="side-menu">
-            <a href="#" class="room-btn">Rooms</a>
-            <a href="#" class="room-btn"><strong>+</strong></a>
-
-        </div>
+        <vc:room></vc:room>
         <div class="chat">
             @RenderBody()
         </div>
@@ -25,13 +21,21 @@
     </main>
 
 
-    <div class="modal active">
-        <div class="modal-body">
-
-        </div>
+    <div class="modal" id="create-room-modal">
+       
+        <form asp-controller="Home" asp-action="CreateRoom" class="modal-body">
+            <button type="button" class="close" onclick="closeModel()">X</button>
+            <header>Create Room</header>
+            <div>
+                <input name="name"/>
+            </div>
+            <footer>
+                <button> Create</button>
+            </footer>
+        </form>
     </div>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

@@ -19,8 +19,15 @@ using ChatApplication;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "D:\My Project\ChatApp\ChatApplication\ChatApplication\Views\_ViewImports.cshtml"
+using ChatEntities.Entity;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"87ff9a1c581d9c380e19444b9c2bd2e52ea20eed", @"/Views/Shared/Error.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e07139a6fa54c458543b6f5994fee5eb59fbce1f", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8c891741cf2bdcebe81f83fafe2aa740d843085f", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Error : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<ChatApplication.ViewModels.ErrorViewModel>
     {
         #pragma warning disable 1998

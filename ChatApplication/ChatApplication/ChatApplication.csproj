@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ChatDataBase\ChatDataBase.csproj" />
+    <ProjectReference Include="..\ChatEntities\ChatEntities.csproj" />
   </ItemGroup>
 
 </Project>

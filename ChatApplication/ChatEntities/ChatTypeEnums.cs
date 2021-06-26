@@ -1,4 +1,4 @@
-﻿namespace ChatApplication.ViewModels
+﻿namespace ChatEntities.Entity
 {
     public enum ChatTypeEnums
     {

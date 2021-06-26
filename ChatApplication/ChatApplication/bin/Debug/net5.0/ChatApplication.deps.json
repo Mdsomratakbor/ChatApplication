@@ -34,6 +34,7 @@
       "ChatApplication/1.0.0": {
         "dependencies": {
           "ChatDataBase": "1.0.0",
+          "ChatEntities": "1.0.0",
           "Microsoft.EntityFrameworkCore.Design": "5.0.7",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.7",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",

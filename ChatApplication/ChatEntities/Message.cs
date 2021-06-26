@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ChatApplication.ViewModels
+namespace ChatEntities.Entity
 {
     public class Message
     {
@@ -8,5 +8,7 @@ namespace ChatApplication.ViewModels
         public string Name { get; set; }
         public string Text { get; set; }
         public DateTime Timestamp { get; set; }
+        public int ChatId { get; set; }
+        public Chat Chat { get; set; }
     }
 }
