@@ -13,7 +13,10 @@
     </div>
 
     <main role="main" class="main">
+        @if (User.Identity.IsAuthenticated) {
         <vc:room></vc:room>
+        }
+
         <div class="chat">
             @RenderBody()
         </div>

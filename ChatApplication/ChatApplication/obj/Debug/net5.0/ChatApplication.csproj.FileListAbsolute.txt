@@ -81,3 +81,5 @@ D:\My Project\ChatApp\ChatApplication\ChatApplication\bin\Debug\net5.0\Microsoft
 D:\My Project\ChatApp\ChatApplication\ChatApplication\obj\Debug\net5.0\Razor\Views\Home\CreateRoom.cshtml.g.cs
 D:\My Project\ChatApp\ChatApplication\ChatApplication\obj\Debug\net5.0\Razor\Views\Shared\Components\Room\Default.cshtml.g.cs
 D:\My Project\ChatApp\ChatApplication\ChatApplication\obj\Debug\net5.0\Razor\Views\Home\Chat.cshtml.g.cs
+D:\My Project\ChatApp\ChatApplication\ChatApplication\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
+D:\My Project\ChatApp\ChatApplication\ChatApplication\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs

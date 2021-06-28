@@ -1,4 +1,5 @@
-﻿using ChatEntities.Entity;
+﻿using ChatEntities;
+using ChatEntities.Entity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -13,6 +14,12 @@ namespace ChatDataBase
         }
         public DbSet<Chat> Chats { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<ChatUser> ChatUsers { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<ChatUser>().HasKey(x => new { x.ChatId, x.UserId });
+        }
     }
 }

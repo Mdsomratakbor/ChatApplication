@@ -1,32 +1,15 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿  @model IEnumerable<Chat>
+    @{
 
-<div class="chat-body">
-    @for (int i = 0; i < 100; i++)
-    {
-        <div class="message">
-            <header>
-                Anton
-            </header>
-            <p>This is a test message</p>
-            <footer>
-                16:00
-            </footer>
-        </div>
-        <div class="message">
-            <header>
-                Bob
-            </header>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-            <footer>
-                16:02
-            </footer>
-        </div>
+        ViewData["Title"] = "Home Page";
     }
 
-</div>
-<div class="chat-input">
-    <input type="text" />
-    <button>Send</button>
+<div class="chat-body">
+    @foreach (var chat in Model)
+    {
+       
+        <a class="room-btn" asp-controller="Home" asp-action="JoinRoom" asp-route-id="@chat.Id">
+            @chat.Name
+        </a>
+    }
 </div>

@@ -29,10 +29,17 @@ namespace ChatApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-          //  services.AddDbContext<AppDbContext>(options => options.UseSqlServer("ConnectionChatApplication"));
+            //  services.AddDbContext<AppDbContext>(options => options.UseSqlServer("ConnectionChatApplication"));
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnectionChatApplication")));
-            services.AddIdentity<User, IdentityRole>()
-                .AddEntityFrameworkStores< AppDbContext>()
+            services.AddIdentity<User, IdentityRole>(option =>
+            {
+                option.Password.RequireDigit = false;
+                option.Password.RequireLowercase = false;
+                option.Password.RequireNonAlphanumeric = false;
+                option.Password.RequireUppercase = false;
+                option.Password.RequiredLength = 6;
+            })
+                .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
             // services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
@@ -54,7 +61,7 @@ namespace ChatApplication
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
