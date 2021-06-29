@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ChatEntities.Entity;
+using ChatApplication.Hubs;
 
 namespace ChatApplication
 {
@@ -41,6 +42,7 @@ namespace ChatApplication
             })
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
+            services.AddSignalR();
             // services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
 
@@ -63,13 +65,19 @@ namespace ChatApplication
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+           
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapHub<ChatHub>("/chatHub");
             });
+            //app.UseSignalR(routes =>
+            //{
+
+            //});
         }
     }
 }
