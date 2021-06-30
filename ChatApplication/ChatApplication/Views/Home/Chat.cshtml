@@ -44,20 +44,24 @@
             message.classList.add('message');
 
             var header = document.createElement("header");
+            console.log(header);
             header.appendChild(document.createTextNode(data.name));
 
             var p = document.createElement("p");
             p.appendChild(document.createTextNode(data.text));
 
+            console.log(p);
             var footer = document.createElement("footer");
             footer.appendChild(document.createTextNode(data.timestamp));
-
+            console.log(footer);
             message.appendChild(header);
             message.appendChild(p);
             message.appendChild(footer);
 
+            console.log(message);
             var body = document.querySelector('.chat-body');
-            body.append(body);
+            console.log(body);
+            body.append(message);
         });
 
 
