@@ -1,28 +1,79 @@
 ﻿@model Chat
+@{ViewBag.Title = "Chat Room";}
+<style>
+    .container {
+        border: 1px solid #dedede;
+        background-color: #f1f1f1;
+        border-radius: 16px;
+        padding: 1px;
+        margin: 1px 0;
+    }
 
+    .darker {
+        border-color: #ccc;
+        background-color: #ddd;
+    }
+
+    .container::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+   
+    .container img {
+        float: left;
+        max-width: 60px;
+        width: 100%;
+        margin-right: 20px;
+        border-radius: 50%;
+    }
+
+        .container img.right {
+            float: right;
+            margin-left: 20px;
+            margin-right: 0;
+        }
+
+    .time-right {
+        float: right;
+        color: #aaa;
+    }
+
+    .time-left {
+        float: left;
+        color: #999;
+    }
+</style>
 <div class="chat-body">
 
     @foreach (var message in Model.Messages)
     {
-        <div class="message">
+    <div class="container">
+        <img src="~/images/download.png" alt="Avatar" style="width:100%;">@*<span>@message.Name</span>*@
+
+        <p>@message.Text</p>
+        <span class="time-right">@message.Timestamp</span>
+    </div>
+        @*<div class="message">
             <header>
                 @message.Name:
             </header>
             <p>@message.Text</p>
             <footer>
-                @message.Timestamp
+              
             </footer>
-        </div>
+        </div>*@
     }
 
 </div>
 
 <form class="chat-input" onsubmit="sendMessage(event)" asp-controller="Home" asp-action="CreateMessage">
 
-    <input type="text" name="message" />
     <input type="hidden" name="roomName" value="@Model.Name" />
 
     <input type="hidden" name="chatId" value="@Model.Id" />
+    <input type="text" name="message" id="message-input" />
+
     <button type="submit">Send</button>
 
 </form>
@@ -39,28 +90,32 @@
         var _connectionId = '';
 
         connection.on("RecieveMessage", function (data) {
-            console.log(data);
+       
             var message = document.createElement("div");
-            message.classList.add('message');
+            message.classList.add('container');
 
-            var header = document.createElement("header");
-            console.log(header);
+            var image = document.createElement('img');
+            image.src = "/images/download.png";
+            image.title = data.name;
+
+            var header = document.createElement("span");
+      
             header.appendChild(document.createTextNode(data.name));
 
             var p = document.createElement("p");
             p.appendChild(document.createTextNode(data.text));
 
-            console.log(p);
-            var footer = document.createElement("footer");
+        
+            var footer = document.createElement("span");
+            footer.classList.add('time-right');
             footer.appendChild(document.createTextNode(data.timestamp));
-            console.log(footer);
-            message.appendChild(header);
+            message.appendChild(image);
+           // message.appendChild(header);
             message.appendChild(p);
             message.appendChild(footer);
 
-            console.log(message);
             var body = document.querySelector('.chat-body');
-            console.log(body);
+       
             body.append(message);
         });
 
@@ -93,9 +148,10 @@
             event.preventDefault();
             form = event.target;
             var data = new FormData(event.target);
+            document.getElementById('message-input').value='';
             axios.post("/Chat/SendMessage", data)
                 .then(res => {
-
+                    console.log('Message Sent!!');
                 })
                 .catch(error => {
                     console.log("Failed to send message");
