@@ -1,10 +1,91 @@
-﻿<div>
-    <form asp-controller="Account" asp-action="Login" class=""> 
-        <input type="text" name="UserName" placeholder="UserName"/>
-        <input type="password" name="Password" placeholder="Password" />
-        <button type="submit">Submit</button>
-    </form>
-</div>
-<div class="">
-    <a asp-controller="Account" asp-action="Register">Register</a>
-</div>
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <!--Made with love by Mutiullah Samim -->
+    <!--Bootsrap 4 CDN-->
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome-free/css/all.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome-free/css/fontawesome.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome-free/css/brands.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome-free/css/regular.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome-free/css/solid.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome-free/css/svg-with-js.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome-free/css/v4-shims.css" rel="stylesheet" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <!--Custom styles-->
+    <link href="~/css/login.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-center h-100">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Sign In</h3>
+                    <div class="d-flex justify-content-end social_icon">
+                        <span><i class="fab fa-facebook"></i></span>
+                        <span><i class="fab fa-google-plus"></i></span>
+                        <span><i class="fab fa-twitter"></i></span>
+                    </div>
+                </div>
+                <div class="card-body">
+
+                    <form asp-controller="Account" asp-action="Login" class="">
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="text" name="UserName" class="form-control" placeholder="username">
+
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="password" id="passwored" name="Password" class="form-control" placeholder="password">
+                            <div class="input-group-append">
+                                <span id="show"  class="input-group-text"><i class="fas fa-eye"></i></span>
+                            </div>
+                        </div>
+                        <div class="row align-items-center remember">
+                            <input type="checkbox">Remember Me
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Login" class="btn float-right login_btn">
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-center links">
+                        Don't have an account?<a asp-controller="Account" asp-action="Register">Sign Up</a>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <a href="#">Forgot your password?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#show").on({
+                mouseover: function () {
+                    $("#show").css({ 'background': "rgb(108, 139, 192)", "cursor": 'pointer' })
+                    $("#passwored").removeAttr("type", "password").attr("type", "text");
+                },
+                mouseout: function () {
+                    $("#show").css({ "background": "#FFC312" })
+                    $("#passwored").removeAttr("type", "text").attr("type", "password");
+                }
+            })
+
+
+        })
+    </script>
+</body>
+</html>

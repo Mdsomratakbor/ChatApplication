@@ -1,7 +1,63 @@
-﻿<div>
-    <form asp-controller="Account" asp-action="Register" class=""> 
-        <input type="text" name="UserName" placeholder="UserName"/>
-        <input type="password" name="Password" placeholder="Password" />
-        <button type="submit">Register</button>
-    </form>
-</div>
+﻿@{ 
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Page</title>
+  
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome-free/css/all.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome-free/css/fontawesome.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome-free/css/brands.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome-free/css/regular.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome-free/css/solid.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome-free/css/svg-with-js.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome-free/css/v4-shims.css" rel="stylesheet" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <!--Custom styles-->
+    <link href="~/css/registration.css" rel="stylesheet" />
+</head>
+<body>
+
+
+    <!------ Include the above in your HEAD tag ---------->
+
+    <div class="col-md-4 col-md-offset-4" id="login">
+        <section id="inner-wrapper" class="login">
+            <article>
+                <form asp-controller="Account" asp-action="Register">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user"> </i></span>
+                            <input type="text" class="form-control" name="UserName" placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope"> </i></span>
+                            <input type="email" class="form-control" placeholder="Email Address">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-key"> </i></span>
+                            <input type="password" name="Password" class="form-control" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-key"> </i></span>
+                            <input type="password" class="form-control" placeholder="Confirm Password">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block">Submit</button>
+                </form>
+            </article>
+        </section>
+    </div>
+    </body>
+</html>

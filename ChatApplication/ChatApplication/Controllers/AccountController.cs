@@ -32,6 +32,7 @@ namespace ChatApplication.Controllers
                 var result = await _signInManager.PasswordSignInAsync(user, Password, false, false);
                 if (result.Succeeded)
                 {
+
                     return RedirectToAction("Index", "Home");
                 }
             }
