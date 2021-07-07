@@ -83,3 +83,5 @@ D:\My Project\ChatApp\ChatApplication\ChatApplication\obj\Debug\net5.0\Razor\Vie
 D:\My Project\ChatApp\ChatApplication\ChatApplication\obj\Debug\net5.0\Razor\Views\Home\Chat.cshtml.g.cs
 D:\My Project\ChatApp\ChatApplication\ChatApplication\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
 D:\My Project\ChatApp\ChatApplication\ChatApplication\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs
+D:\My Project\ChatApp\ChatApplication\ChatApplication\obj\Debug\net5.0\Razor\Views\Home\Find.cshtml.g.cs
+D:\My Project\ChatApp\ChatApplication\ChatApplication\obj\Debug\net5.0\Razor\Views\Home\Private.cshtml.g.cs

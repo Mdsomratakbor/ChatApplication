@@ -20,31 +20,31 @@ namespace ChatApplication.Controllers
         {
             _chat = chat;
         }
-        [HttpPost("[action]/{connectionId}/{roomName}")]
-        public async Task<IActionResult> JoinRoom(string connectionId, string roomName)
+        [HttpPost("[action]/{connectionId}/{roomId}")]
+        public async Task<IActionResult> JoinRoom(string connectionId, string roomId)
         {
-           await _chat.Groups.AddToGroupAsync(connectionId, roomName);
+           await _chat.Groups.AddToGroupAsync(connectionId, roomId);
             return Ok();
         }
-        [HttpPost("[action]/{connectionId}/{roomName}")]
-        public async Task<IActionResult> LeaveRoom(string connectionId, string roomName)
+        [HttpPost("[action]/{connectionId}/{roomId}")]
+        public async Task<IActionResult> LeaveRoom(string connectionId, string roomId)
         {
-            await _chat.Groups.RemoveFromGroupAsync(connectionId, roomName);
+            await _chat.Groups.RemoveFromGroupAsync(connectionId, roomId);
             return Ok();
         }
         [HttpPost("[action]")]
-        public async Task<IActionResult> SendMessage(string message, int chatId, string roomName, [FromServices] AppDbContext ctx)
+        public async Task<IActionResult> SendMessage(string message, int roomId,  [FromServices] AppDbContext ctx)
         {
             var msg = new Message
             {
-                ChatId = chatId,
+                ChatId = roomId,
                 Text = message,
                 Name = User.Identity.Name,
                 Timestamp = DateTime.Now
             };
             ctx.Messages.Add(msg);
             await ctx.SaveChangesAsync();
-            await _chat.Clients.Group(roomName).SendAsync("RecieveMessage", new
+            await _chat.Clients.Group(roomId.ToString()).SendAsync("RecieveMessage", new
             {
                 Text = msg.Text,
                 Name = msg.Name,
