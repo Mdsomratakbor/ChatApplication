@@ -1,87 +1,404 @@
 ﻿@model Chat
-@{ViewBag.Title = "Chat Room";}
+@{ViewBag.Title = "Chat Room";
+	var users = ViewBag.Users;
+	}
+
 <style>
-    .container {
-        border: 1px solid #dedede;
-        background-color: #f1f1f1;
-        border-radius: 16px;
-        padding: 1px;
-        margin: 1px 0;
-    }
+    	body,html{
+			height: 100%;
+			margin: 0;
+			background: #7F7FD5;
+	       background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+	        background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+		}
 
-    .darker {
-        border-color: #ccc;
-        background-color: #ddd;
-    }
+		.chat{
+			margin-top: auto;
+			margin-bottom: auto;
+		}
+		.card{
+			height: 500px;
+			border-radius: 15px !important;
+			background-color: rgba(0,0,0,0.4) !important;
+		}
+		.contacts_body{
+			padding:  0.75rem 0 !important;
+			overflow-y: auto;
+			white-space: nowrap;
+		}
+		.msg_card_body{
+			overflow-y: auto;
+		}
+		.card-header{
+			border-radius: 15px 15px 0 0 !important;
+			border-bottom: 0 !important;
+		}
+	 .card-footer{
+		border-radius: 0 0 15px 15px !important;
+			border-top: 0 !important;
+	}
+		.container{
+			align-content: center;
+		}
+		.search{
+			border-radius: 15px 0 0 15px !important;
+			background-color: rgba(0,0,0,0.3) !important;
+			border:0 !important;
+			color:white !important;
+		}
+		.search:focus{
+		     box-shadow:none !important;
+           outline:0px !important;
+		}
+		.type_msg{
+			background-color: rgba(0,0,0,0.3) !important;
+			border:0 !important;
+			color:white !important;
+			height: 60px !important;
+			overflow-y: auto;
+		}
+			.type_msg:focus{
+		     box-shadow:none !important;
+           outline:0px !important;
+		}
+		.attach_btn{
+	border-radius: 15px 0 0 15px !important;
+	background-color: rgba(0,0,0,0.3) !important;
+			border:0 !important;
+			color: white !important;
+			cursor: pointer;
+		}
+		.send_btn{
+	border-radius: 0 15px 15px 0 !important;
+	background-color: rgba(0,0,0,0.3) !important;
+			border:0 !important;
+			color: white !important;
+			cursor: pointer;
+		}
+		.search_btn{
+			border-radius: 0 15px 15px 0 !important;
+			background-color: rgba(0,0,0,0.3) !important;
+			border:0 !important;
+			color: white !important;
+			cursor: pointer;
+		}
+		.contacts{
+			list-style: none;
+			padding: 0;
+		}
+		.contacts li{
+			width: 100% !important;
+			padding: 5px 10px;
+			margin-bottom: 15px !important;
+		}
+	.active{
+			background-color: rgba(0,0,0,0.3);
+	}
+		.user_img{
+			height: 70px;
+			width: 70px;
+			border:1.5px solid #f5f6fa;
 
-    .container::after {
-        content: "";
-        clear: both;
-        display: table;
-    }
-   
-    .container img {
-        float: left;
-        max-width: 60px;
-        width: 100%;
-        margin-right: 20px;
-        border-radius: 50%;
-    }
+		}
+		.user_img_msg{
+			height: 40px;
+			width: 40px;
+			border:1.5px solid #f5f6fa;
 
-        .container img.right {
-            float: right;
-            margin-left: 20px;
-            margin-right: 0;
-        }
+		}
+	.img_cont{
+			position: relative;
+			height: 70px;
+			width: 70px;
+	}
+	.img_cont_msg{
+			height: 40px;
+			width: 40px;
+	}
+	.online_icon{
+		position: absolute;
+		height: 15px;
+		width:15px;
+		background-color: #4cd137;
+		border-radius: 50%;
+		bottom: 0.2em;
+		right: 0.4em;
+		border:1.5px solid white;
+	}
+	.offline{
+		background-color: #c23616 !important;
+	}
+	.user_info{
+		margin-top: auto;
+		margin-bottom: auto;
+		margin-left: 15px;
+	}
+	.user_info span{
+		font-size: 20px;
+		color: white;
+	}
+	.user_info p{
+	font-size: 10px;
+	color: rgba(255,255,255,0.6);
+	}
+	.video_cam{
+		margin-left: 50px;
+		margin-top: 5px;
+	}
+	.video_cam span{
+		color: white;
+		font-size: 20px;
+		cursor: pointer;
+		margin-right: 20px;
+	}
+	.msg_cotainer{
+		margin-top: auto;
+		margin-bottom: auto;
+		margin-left: 10px;
+		border-radius: 25px;
+		background-color: #82ccdd;
+		padding: 10px;
+		position: relative;
+	}
+	.msg_cotainer_send{
+		margin-top: auto;
+		margin-bottom: auto;
+		margin-right: 10px;
+		border-radius: 25px;
+		background-color: #78e08f;
+		padding: 10px;
+		position: relative;
+	}
+	.msg_time{
+		position: absolute;
+		left: 0;
+		bottom: -15px;
+		color: rgba(255,255,255,0.5);
+		font-size: 10px;
+	}
+	.msg_time_send{
+		position: absolute;
+		right:0;
+		bottom: -15px;
+		color: rgba(255,255,255,0.5);
+		font-size: 10px;
+	}
+	.msg_head{
+		position: relative;
+	}
+	#action_menu_btn{
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		color: white;
+		cursor: pointer;
+		font-size: 20px;
+	}
+	.action_menu{
+		z-index: 1;
+		position: absolute;
+		padding: 15px 0;
+		background-color: rgba(0,0,0,0.5);
+		color: white;
+		border-radius: 15px;
+		top: 30px;
+		right: 15px;
+		display: none;
+	}
+	.action_menu ul{
+		list-style: none;
+		padding: 0;
+	margin: 0;
+	}
+	.action_menu ul li{
+		width: 100%;
+		padding: 10px 15px;
+		margin-bottom: 5px;
+	}
+	.action_menu ul li i{
+		padding-right: 10px;
 
-    .time-right {
-        float: right;
-        color: #aaa;
-    }
-
-    .time-left {
-        float: left;
-        color: #999;
-    }
+	}
+	.action_menu ul li:hover{
+		cursor: pointer;
+		background-color: rgba(0,0,0,0.2);
+	}
+	@*@media(max-width: 576px){
+	.contacts_card{
+		margin-bottom: 15px !important;
+	}
+	}*@
 </style>
-<div class="chat-body">
 
-    @foreach (var message in Model.Messages)
-    {
-    <div class="container">
-        <img src="~/images/download.png" alt="Avatar" style="width:100%;">@*<span>@message.Name</span>*@
 
-        <p>@message.Text</p>
-        <span class="time-right">@message.Timestamp</span>
+
+
+<div class="container-fluid h-100">
+    <div class="row justify-content-center h-100">
+        <div class="col-md-4 col-xl-3 chat">
+            <div class="card mb-sm-3 mb-md-0 contacts_card">
+                <div class="card-header">
+                    <div class="input-group">
+                        <input type="text" placeholder="Search..." name="" class="form-control search">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text search_btn"><i class="fas fa-search"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body contacts_body">
+                    <ui class="contacts">
+                        <li class="active">
+            <div class="d-flex bd-highlight">
+                <div class="img_cont">
+                    <img src="~/images/user_image_2.jpg" class="rounded-circle user_img">
+                    <span class="online_icon"></span>
+                </div>
+                <div class="user_info">
+                    <span>Khalid</span>
+                    <p>Kalid is online</p>
+                </div>
+            </div>
+        </li>
+                        @foreach (var user in users)
+                        {
+
+                            <li>
+                                <div class="d-flex bd-highlight">
+                                    <div class="img_cont">
+                                        <img src="~/images/download.jpg" class="rounded-circle user_img">
+                                        <span class="online_icon offline"></span>
+                                    </div>
+                                    <div class="user_info">
+                                        <span>@user.User.UserName</span>
+                                        <p>Taherah left 7 mins ago</p>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+
+                    </ui>
+                </div>
+                <div class="card-footer"></div>
+            </div>
+        </div>
+        <div class="col-md-8 col-xl-6 chat">
+            <div class="card">
+                <div class="card-header msg_head">
+                    <div class="d-flex bd-highlight">
+                        <div class="img_cont">
+                            <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img">
+                            <span class="online_icon"></span>
+                        </div>
+                        <div class="user_info">
+                            <span>@ViewBag.RoomName</span>
+                            <p>@Model.Messages.Count()</p>
+                        </div>
+                        <div class="video_cam">
+                            <span><i class="fas fa-video"></i></span>
+                            <span><i class="fas fa-phone"></i></span>
+                        </div>
+                    </div>
+                    <span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
+                    <div class="action_menu">
+                        <ul>
+                            <li><i class="fas fa-user-circle"></i> View profile</li>
+                            <li><i class="fas fa-users"></i> Add to close friends</li>
+                            <li><i class="fas fa-plus"></i> Add to group</li>
+                            <li><i class="fas fa-ban"></i> Block</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-body msg_card_body" id="chat-body">
+
+                    @foreach (var message in Model.Messages)
+                    {
+
+
+                        if (message.Name == User.Identity.Name)
+                        {
+                            <div class="d-flex justify-content-end mb-4">
+                                <div class="msg_cotainer_send">
+                                    @message.Text
+                                    <span class="msg_time_send">@message.Timestamp</span>
+                                </div>
+                                <div class="img_cont_msg">
+                                    <img src="~/images/user_image_2.jpg" class="rounded-circle user_img_msg">
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+
+                            <div class="d-flex justify-content-start mb-4">
+                                <div class="img_cont_msg">
+                                    <img src="~/images/user_image.png" class="rounded-circle user_img_msg">
+                                </div>
+                                <div class="msg_cotainer">
+                                    @message.Text
+                                    <span class="msg_time">@message.Timestamp</span>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+                <form onsubmit="sendMessage(event)" asp-controller="Home" asp-action="CreateMessage">
+                    <div class="card-footer">
+                        <div class="input-group">
+                            <div class="input-group-append">
+                                <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
+                            </div>
+
+
+                            @*<input type="hidden" name="roomId" value="@Model.Name" />*@
+
+                            <input type="hidden" name="roomId" value="@Model.Id" />
+                            <textarea name="message" id="message-input" required class="form-control type_msg" placeholder="Type your message..."></textarea>
+                            <div class="input-group-append">
+                                <span class="input-group-text send_btn"> <button type="submit"><i class="fa fa-send"></i></button></span>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-        @*<div class="message">
-            <header>
-                @message.Name:
-            </header>
-            <p>@message.Text</p>
-            <footer>
-              
-            </footer>
-        </div>*@
-    }
-
 </div>
-
-<form class="chat-input" onsubmit="sendMessage(event)" asp-controller="Home" asp-action="CreateMessage">
-
-    @*<input type="hidden" name="roomId" value="@Model.Name" />*@
-
-    <input type="hidden" name="roomId" value="@Model.Id" />
-    <input type="text" name="message" id="message-input" />
-
-    <button type="submit">Send</button>
-
-</form>
 
 @section scripts{
     <script src="~/js/signalr.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
+        //fetch("http://example.com/api/endpoint/", {
+        //    method: "post",
+        //    headers: {
+        //        'Accept': 'application/json',
+        //        'Content-Type': 'application/json'
+        //    },
+
+        //    //make sure to serialize your JSON body
+        //    body: JSON.stringify({
+        //        name: myName,
+        //        password: myPassword
+        //    })
+        //})
+
+
+		async function message_load() {
+			await fetch('/home/chat', {
+				method: "get"
+               
+			})
+                .then(response => {
+                    // handle the response
+                })
+				.catch(error => {
+					console.log(error)
+                });
+		}
+		message_load();
+
+
 
         const connection = new signalR.HubConnectionBuilder()
             .withUrl("/chatHub")
@@ -90,34 +407,19 @@
         var _connectionId = '';
 
         connection.on("RecieveMessage", function (data) {
-       
-            var message = document.createElement("div");
-            message.classList.add('container');
 
-            var image = document.createElement('img');
-            image.src = "/images/download.png";
-            image.title = data.name;
-
-            var header = document.createElement("span");
-      
-            header.appendChild(document.createTextNode(data.name));
-
-            var p = document.createElement("p");
-            p.appendChild(document.createTextNode(data.text));
-
-        
-            var footer = document.createElement("span");
-            footer.classList.add('time-right');
-            footer.appendChild(document.createTextNode(data.timestamp));
-            message.appendChild(image);
-           // message.appendChild(header);
-            message.appendChild(p);
-            message.appendChild(footer);
-
-            var body = document.querySelector('.chat-body');
-       
-            body.append(message);
+			var message = `<div class="d-flex justify-content-end mb-4">
+                                    <div class="msg_cotainer_send">
+                                        ${data.text}
+                                        <span class="msg_time_send">${data.timestamp}</span>
+                                    </div>
+                                    <div class="img_cont_msg">
+                                        <img src="/images/user_image_2.jpg" class="rounded-circle user_img_msg">
+                                    </div>
+                                </div>`
+            document.querySelector('#chat-body').innerHTML += message;
         });
+
 
 
         var joinRoom = function () {

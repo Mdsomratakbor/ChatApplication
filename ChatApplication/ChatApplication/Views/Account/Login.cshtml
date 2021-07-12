@@ -35,7 +35,8 @@
                 </div>
                 <div class="card-body">
 
-                    <form asp-controller="Account" asp-action="Login" class="">
+                    <form asp-controller="Account" asp-action="Login">
+                        @Html.AntiForgeryToken()
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -49,7 +50,7 @@
                             </div>
                             <input type="password" id="passwored" name="Password" class="form-control" placeholder="password">
                             <div class="input-group-append">
-                                <span id="show"  class="input-group-text"><i class="fas fa-eye"></i></span>
+                                <span id="show" class="input-group-text"><i class="fas fa-eye"></i></span>
                             </div>
                         </div>
                         <div class="row align-items-center remember">

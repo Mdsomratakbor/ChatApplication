@@ -4,14 +4,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Chat Application</title>
-    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <link href="~/lib/fontawesome-free/css/all.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome-free/css/fontawesome.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome-free/css/brands.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome-free/css/regular.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome-free/css/solid.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome-free/css/svg-with-js.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome-free/css/v4-shims.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
 </head>
 <body>
     <div class="navbar">
         <a asp-controller="Home" asp-action="Index">Home</a>
         <a asp-controller="Home" asp-action="Find">Find</a>
         <a asp-controller="Home" asp-action="Private">Private</a>
+        <a class="float-right">Logout <i class="fa fa-sign-out"></i></a>
     </div>
 
     <main role="main" class="main">

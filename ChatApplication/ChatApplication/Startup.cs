@@ -43,6 +43,8 @@ namespace ChatApplication
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
             services.AddSignalR();
+
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
             // services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
 

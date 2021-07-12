@@ -12,6 +12,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using System.Dynamic;
 
 namespace ChatApplication.Controllers
 {
@@ -68,9 +69,13 @@ namespace ChatApplication.Controllers
         }
 
         [HttpGet("id")]
-        public IActionResult Chat(int id)
+        public IActionResult Chat(int id, int lastMessage = -40)
         {
-            var chat = _ctx.Chats.Include(x=>x.Messages).FirstOrDefault(x => x.Id == id);
+          
+            var chat = _ctx.Chats.Include(x=>x.Messages.Where(y => y.Timestamp > DateTime.Now.AddMinutes(lastMessage))).FirstOrDefault(x => x.Id == id);
+            ViewBag.Users = _ctx.ChatUsers.Include(x=>x.User).Where(x => x.ChatId == id).ToList();
+            ViewBag.RoomName = _ctx.Chats.Where(x => x.Id == id).Select(x=>x.Name).SingleOrDefault();
+    
             return View(chat);
         }
        

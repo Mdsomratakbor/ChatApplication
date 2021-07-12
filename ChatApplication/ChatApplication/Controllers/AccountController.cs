@@ -25,11 +25,12 @@ namespace ChatApplication.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(string UserName, string Password) {
             var user =  await _userManager.FindByNameAsync(UserName);
             if (user != null)
             {
-                var result = await _signInManager.PasswordSignInAsync(user, Password, false, false);
+                var result = await _signInManager.PasswordSignInAsync(user, Password, true, true);
                 if (result.Succeeded)
                 {
 
@@ -45,21 +46,40 @@ namespace ChatApplication.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult >Register(string UserName, string Password)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult >Register(UserViewModels model)
         {
-            var user = new User
+            if (ModelState.IsValid)
             {
-                UserName = UserName
-            };
-           var result = await _userManager.CreateAsync(user, Password);
-            if (result.Succeeded) {
-               await _signInManager.SignInAsync(user, false);
-                return RedirectToAction("Index","Home");
+                try
+                {
+                    var user = new User
+                    {
+                        UserName = model.UserName,
+                        Email = model.Email
+                    };
+                    var result = await _userManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
+                    {
+                        await _signInManager.SignInAsync(user, false);
+                        return RedirectToAction("Index", "Home");
+                    }
+                    return View();
+                }
+                catch (Exception ex)
+                {
+                    
+                    return View(ex.Message);
+                }
+              
+                
             }
-            return RedirectToAction("Register","Account");
+            else return View();
+          
         }
         public async Task<IActionResult> Logout()
         {
+       
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login", "Account");
         }
