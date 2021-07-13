@@ -1,7 +1,8 @@
 ﻿@model Chat
 @{ViewBag.Title = "Chat Room";
-	var users = ViewBag.Users;
-	}
+    var users = ViewBag.Users;
+    int pages = @ViewBag.TotalPage - 1;
+}
 
 <style>
     	body,html{
@@ -248,17 +249,17 @@
                 <div class="card-body contacts_body">
                     <ui class="contacts">
                         <li class="active">
-            <div class="d-flex bd-highlight">
-                <div class="img_cont">
-                    <img src="~/images/user_image_2.jpg" class="rounded-circle user_img">
-                    <span class="online_icon"></span>
-                </div>
-                <div class="user_info">
-                    <span>Khalid</span>
-                    <p>Kalid is online</p>
-                </div>
-            </div>
-        </li>
+                            <div class="d-flex bd-highlight">
+                                <div class="img_cont">
+                                    <img src="~/images/user_image_2.jpg" class="rounded-circle user_img">
+                                    <span class="online_icon"></span>
+                                </div>
+                                <div class="user_info">
+                                    <span>Khalid</span>
+                                    <p>Kalid is online</p>
+                                </div>
+                            </div>
+                        </li>
                         @foreach (var user in users)
                         {
 
@@ -308,7 +309,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="card-body msg_card_body" id="chat-body">
+                <div class="card-body msg_card_body" id="chat-body"  onscroll="data_load()">
 
                     @foreach (var message in Model.Messages)
                     {
@@ -384,19 +385,59 @@
         //})
 
 
-		async function message_load() {
-			await fetch('/home/chat', {
-				method: "get"
-               
-			})
-                .then(response => {
-                    // handle the response
-                })
-				.catch(error => {
-					console.log(error)
-                });
+		 function message_load(id, page) {
+			   $.ajax({
+                        method: 'Get',
+                        url: '../Home/MessageData',
+                   data: { chatId: id, totalPages: page  }
+			   }).done(function (response) {
+				   let message;
+                   let chatBody = document.querySelector('#chat-body');
+				   if (response.messages.length > 0) {
+					   let messages = response.messages;
+                       for (let i = 0; i < messages.length; i++) {
+                           if (messages[i].name == '@User.Identity.Name') {
+							   message = `<div class="d-flex justify-content-end mb-4">
+                                <div class="msg_cotainer_send">
+                                   ${messages[i].text}
+                                    <span class="msg_time_send">${messages[i].timestamp}</span>
+                                </div>
+                                <div class="img_cont_msg">
+                                    <img src="/images/user_image_2.jpg" class="rounded-circle user_img_msg">
+                                </div>
+                            </div>`
+						   }
+						   else {
+
+							   message = `<div class="d-flex justify-content-start mb-4">
+                                <div class="img_cont_msg">
+                                    <img src="/images/user_image.png" class="rounded-circle user_img_msg">
+                                </div>
+                                <div class="msg_cotainer">
+                                     ${messages[i].text}
+                                    <span class="msg_time">${messages[i].timestamp}</span>
+                                </div>
+                            </div>`
+						   }
+						   chatBody.insertAdjacentHTML('afterbegin', message);
+					   }
+                   }
+
+              })
 		}
-		message_load();
+
+		let page = @pages;
+		function data_load() {
+
+			if (document.querySelector('#chat-body').scrollTop == 0) {
+
+				if (page > 0) {
+					message_load('@Model.Id', page);
+                    page= page-1;
+                }
+
+			};
+		}
 
 
 

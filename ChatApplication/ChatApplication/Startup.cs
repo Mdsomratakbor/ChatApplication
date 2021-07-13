@@ -44,6 +44,10 @@ namespace ChatApplication
                 .AddDefaultTokenProviders();
             services.AddSignalR();
 
+            services.AddControllers().AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
+
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             // services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }

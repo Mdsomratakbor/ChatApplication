@@ -396,3 +396,6 @@ D:\My Project\ChatApp\ChatApplication\ChatApplication\bin\Debug\net5.0\tr\Micros
 D:\My Project\ChatApp\ChatApplication\ChatApplication\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
 D:\My Project\ChatApp\ChatApplication\ChatApplication\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
 D:\My Project\ChatApp\ChatApplication\ChatApplication\obj\Debug\net5.0\ChatApplication.MvcApplicationPartsAssemblyInfo.cs
+D:\My Project\ChatApp\ChatApplication\ChatApplication\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\My Project\ChatApp\ChatApplication\ChatApplication\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\My Project\ChatApp\ChatApplication\ChatApplication\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
