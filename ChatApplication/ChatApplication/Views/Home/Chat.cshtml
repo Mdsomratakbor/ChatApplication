@@ -224,6 +224,12 @@
 		cursor: pointer;
 		background-color: rgba(0,0,0,0.2);
 	}
+    .loader_image {
+        display: none;
+        margin-left: auto;
+        margin-right: auto;
+        width: 6%;
+    }
 	@*@media(max-width: 576px){
 	.contacts_card{
 		margin-bottom: 15px !important;
@@ -309,7 +315,8 @@
                         </ul>
                     </div>
                 </div>
-                <div class="card-body msg_card_body" id="chat-body"  onscroll="data_load()">
+                <img class="loader_image" id="loader-img" src="~/images/loader-image.gif" />
+                <div class="card-body msg_card_body" id="chat-body" onscroll="data_load()">
 
                     @foreach (var message in Model.Messages)
                     {
@@ -362,6 +369,7 @@
                     </div>
                 </form>
             </div>
+            <audio id="message-sound" src="sounds/message.mp3"></audio>
         </div>
     </div>
 </div>
@@ -370,22 +378,17 @@
     <script src="~/js/signalr.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
-        //fetch("http://example.com/api/endpoint/", {
-        //    method: "post",
-        //    headers: {
-        //        'Accept': 'application/json',
-        //        'Content-Type': 'application/json'
-        //    },
-
-        //    //make sure to serialize your JSON body
-        //    body: JSON.stringify({
-        //        name: myName,
-        //        password: myPassword
-        //    })
-        //})
+        function message_sound() {
+            const audio = document.querySelector(`#message-sound`);
+            if (!audio) return // if key code is invalid then function is stop
+            audio.play();
+            audio.currentTime = 0;
+        }
 
 
-		 function message_load(id, page) {
+
+		function message_load(id, page) {
+            document.getElementById('loader-img').style.display ='inline'
 			   $.ajax({
                         method: 'Get',
                         url: '../Home/MessageData',
@@ -420,6 +423,7 @@
                             </div>`
 						   }
 						   chatBody.insertAdjacentHTML('afterbegin', message);
+                          document.getElementById('loader-img').style.display = 'none'
 					   }
                    }
 
@@ -458,7 +462,9 @@
                                         <img src="/images/user_image_2.jpg" class="rounded-circle user_img_msg">
                                     </div>
                                 </div>`
-            document.querySelector('#chat-body').innerHTML += message;
+			document.querySelector('#chat-body').innerHTML += message;
+            if (data.name != '@User.Identity.Name') 
+			message_sound();
         });
 
 

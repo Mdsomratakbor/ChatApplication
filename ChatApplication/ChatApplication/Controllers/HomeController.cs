@@ -88,13 +88,14 @@ namespace ChatApplication.Controllers
         [HttpGet]
         public Chat MessageData(int chatId, int totalPages)
         {
-            var data =  _ctx.Chats
+
+            var data = _ctx.Chats
                 .Include(x => x.Messages
             .Skip((totalPages - 1) * 10)
             .Take(10))
             .FirstOrDefault(x => x.Id == chatId);
             return data;
-        }
+        } 
 
         [HttpPost]
         public async Task<IActionResult> CreateRoom(string name)
